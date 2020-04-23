@@ -12,10 +12,12 @@ http://www.dba-oracle.com/t_data_redaction.htm
 
 Lets say we have a SSN in the member table of act_rman_user. We select and can see the data:
 
+```
 SQL> select ssn from act_rman_user.member where employee_nbr=167;
 SSN
 ---------
 433504465
+```
 
 We can masking the last four digits with this policy:
 
