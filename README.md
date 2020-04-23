@@ -67,10 +67,11 @@ END;
 
 We can automate this process in a workflow by:
 
-1)  Install redact.sh into /act/scripts and making it executable.
-Edit the file as needed
+1.  Install redact.sh into /act/scripts and making it executable.   Edit the file as needed
+1. Install redact.sql into /act/scripts/    Edit the file as needed
+1. Create a workflow to run the redact.sh script
 
-2)  Install redact.sql into /act/scripts/
-Edit the file as needed
+When the workflow runs after creating the Virtual Database it will:
 
-3)  Have a workflow run the redact.sh script
+1. Set the redaction policy
+1. Create a user you can use to test the redaction policy.
