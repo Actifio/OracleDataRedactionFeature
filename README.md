@@ -19,7 +19,7 @@ SSN
 433504465
 ```
 
-We can masking the last four digits with this policy:
+We can mask the last four digitsof the SSN with this policy:
 
 ```
 BEGIN
@@ -36,7 +36,7 @@ column_description  => 'SSN col contains social security number');
 END
 /
 ```
-We now create a new user:
+To test it we now create a new limited user:
 ```
 CREATE USER devuser3 IDENTIFIED BY password;
 GRANT CONNECT TO devuser3;
@@ -44,7 +44,7 @@ GRANT CREATE SESSION TO devuser3;
 GRANT SELECT ON act_rman_user.member TO devuser3;
 ```
 
-When that user does the same select:
+We log in as that same user and do the same select and confirm the data is partial redacted by policy:
 
 ```
 SQL> select ssn from act_rman_user.member where employee_nbr=167;
@@ -53,7 +53,7 @@ SSN
 433-04-XX
 ```
 
-To remove the policy we can run this command:
+Note to remove the policy we can run this command:
 
 ```
 BEGIN
@@ -65,13 +65,13 @@ END;
 /
 ```
 
-We can automate this process in a workflow by:
+We can automate the redaction of an Actifio Virtual Database by using a workflow:
 
-1.  Install redact.sh into /act/scripts and making it executable.   Edit the file as needed
-1. Install redact.sql into /act/scripts/    Edit the file as needed
+1. Install redact.sh into /act/scripts and make it executable.   Edit the file to match your Oracle environment.
+1. Install redact.sql into /act/scripts/    Edit the file as needed to create the policies needed.  The user creation section can be removed or retained as needed.
 1. Create a workflow to run the redact.sh script
 
-When the workflow runs after creating the Virtual Database it will:
+When the workflow is run, after creating the Virtual Database the Actifio Connector will run the script to:
 
 1. Set the redaction policy
 1. Create a user you can use to test the redaction policy.
