@@ -3,7 +3,12 @@
 # Edit this line to change the sql file name if needed.   SID and orahome should be detected automatically
 maskfunc()
 {
-su - oracle -c "cd /act/scripts;export ORACLE_SID=$databasesid;export ORACLE_HOME=$orahome;export PATH=$ORACLE_HOME/bin:$PATH;ORAENV_ASK=NO;sqlplus / as sysdba @/act/scripts/redact.sql;exit"
+script=redact.sql
+ORACLE_HOME=$orahome
+ORACLE_SID=$databasesid
+oraclecommand="cd /act/scripts;export ORACLE_HOME=$ORACLE_HOME;export ORACLE_SID=$ORACLE_SID;export PATH=$ORACLE_HOME/bin:$PATH;ORAENV_ASK=NO;sqlplus / as sysdba @/act/scripts/$script;exit"
+echo "$oraclecommand"
+su -m oracle -c "$oraclecommand"
 }
 
 # test for testing
