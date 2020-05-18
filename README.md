@@ -66,9 +66,9 @@ END;
 
 We can automate the redaction of an Actifio Virtual Database by using a workflow:
 
-1. Install redact.sh into /act/scripts and make it executable.   Edit the file to match your Oracle environment.
+1. Install redact.sh into /act/scripts and make it executable.   You should not need to edit this file at all.   All variables will be learned during run time.  This is different to the initial version of the script.
 1. Install redact.sql into /act/scripts/    Edit the file as needed to create the policies needed.  The user creation section can be removed or retained as needed.
-1. Create a workflow to run the redact.sh script
+1. Create a workflow to run the redact.sh script.  The worflow script box needs to contain both the script file and the SQL file, so state both scripts with no paths and a space in between like this:   redact.sh redact.sql 
 
 When the workflow is run, after creating the Virtual Database the Actifio Connector will run the script to:
 
