@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Edit this line to match your environment.  The rest of the script does not need editing
+# Edit this line to change the sql file name if needed.   SID and orahome should be detected automatically
 maskfunc()
 {
-su - oracle -c 'cd /act/scripts;export ORACLE_SID=unmasked;export ORACLE_HOME=/home/oracle/app/oracle/product/12.2.0/dbhome_1;export PATH=$ORACLE_HOME/bin:$PATH;ORAENV_ASK=NO;sqlplus / as sysdba @/act/scripts/redact.sql;exit'
+su - oracle -c "cd /act/scripts;export ORACLE_SID=$databasesid;export ORACLE_HOME="$orahome";export PATH=$ORACLE_HOME/bin:$PATH;ORAENV_ASK=NO;sqlplus / as sysdba @/act/scripts/redact.sql;exit"
 }
 
 # test for testing
