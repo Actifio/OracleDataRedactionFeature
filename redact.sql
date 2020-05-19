@@ -1,5 +1,8 @@
+/* Leave the two lines below in place as they ensure the workflow fails if the SQL fails */
 WHENEVER OSERROR EXIT FAILURE
 WHENEVER SQLERROR EXIT SQL.SQLCODE
+
+/*  Your commands begin here.  */
 BEGIN
 DBMS_REDACT.ADD_POLICY(
 object_schema       => 'act_rman_user',
