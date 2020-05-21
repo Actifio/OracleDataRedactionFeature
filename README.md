@@ -66,9 +66,10 @@ END;
 
 We can automate the redaction of an Actifio Virtual Database by using a workflow:
 
-1. Install redact.sh into /act/scripts and make it executable.   You should not need to edit this file at all.   All variables will be learned during run time.  This is different to the initial version of the script.
+1. Install workflow.sh into /act/scripts and make it executable.  You will find this here:    https://github.com/Actifio/OracleWorkflowScript/blob/master/workflow.sh
+You should not need to edit this file at all.   All variables will be learned during run time.  This is different to the initial version of the script.
 1. Install redact.sql into /act/scripts/    Edit the file as needed to create the policies needed.  The user creation section can be removed or retained as needed.
-1. Create a workflow to run the redact.sh script.  The worflow script box needs to contain both the script file and the SQL file, so state both scripts with no paths and a space in between like this:   redact.sh redact.sql 
+1. Create a workflow to run the workflow.sh script.  The worflow script box needs to contain both the script file and the SQL file, so state both scripts with no paths and a space in between like this:   workflow.sh redact.sql 
 
 When the workflow is run, after creating the Virtual Database the Actifio Connector will run the script to:
 
@@ -77,6 +78,7 @@ When the workflow is run, after creating the Virtual Database the Actifio Connec
 
 To manually test outside a workflow (where the DB is already mounted) do the following as root user:
 
+Set the username variable, e.g.   export username=oracle
 Set the orahome variable, e.g. export orahome=/home/oracle/app/oracle/product/12.2.0/dbhome_1
 Set databasesid variable (the SID of the Oracle DB), e.g. export databasesid=demodb
-Run the sh script using this syntax (change .sh script and .sql script names to suit): ./redact.sh test redact.sql
+Run the sh script using this syntax (change .sh script and .sql script names to suit): ./workflow.sh test redact.sql
