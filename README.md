@@ -79,7 +79,7 @@ When the workflow is run, after creating the Virtual Database the Actifio Connec
 
 To manually test outside a workflow (where the DB is already mounted) do the following as root user:
 
-Set the username variable, e.g.   export username=oracle
-Set the orahome variable, e.g. export orahome=/home/oracle/app/oracle/product/12.2.0/dbhome_1
-Set databasesid variable (the SID of the Oracle DB), e.g. export databasesid=demodb
-Run the sh script using this syntax (change .sh script and .sql script names to suit): ./workflow.sh test redact.sql
+* Set the username variable, e.g.   export username=oracle
+* Set the orahome variable, e.g. export orahome=/home/oracle/app/oracle/product/12.2.0/dbhome_1
+* Set databasesid variable (the SID of the Oracle DB), e.g. export databasesid=demodb
+* Run the sh script using this syntax (change .sh script and .sql script names to suit): ./workflow.sh test redact.sql
